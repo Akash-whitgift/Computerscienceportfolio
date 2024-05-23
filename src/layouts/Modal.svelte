@@ -6,7 +6,6 @@
 
   let content;
   let modalImage;
-
   const modalsData = {
     modal1: {
       title: 'Uses of Ultraviolet Light',
