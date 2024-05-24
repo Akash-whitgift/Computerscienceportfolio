@@ -62,6 +62,24 @@
       `,
       image: 'https://example.com/image3.jpg', // Specify the image URL for modal3
     },
+    modal4: {
+      title: 'More Things coming',
+      content: `
+        <ul>
+          <li>Photosynthesis</li>
+          <li>Photography</li>
+          <li>Artificial Lighting</li>
+          <li>Optical Fiber Communication</li>
+          <li>Optical Microscopy</li>
+          <li>Optical Tweezers</li>
+          <li>Optical Coherence Tomography</li>
+          <li>Optical Spectroscopy</li>
+          <li>Optical Sensors</li>
+          <li>Optical Discs</li>
+        </ul>
+      `,
+      image: 'https://example.com/image3.jpg', // Specify the image URL for modal3
+    },
     // Add content for other modals (modal4, modal5, etc.)
   };
 
