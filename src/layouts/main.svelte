@@ -25,7 +25,7 @@
   function closeModal() {
     isModalOpen = false;
     currentModalId = null;
-    window.history.back();
+
   }
 
   function allowModalScroll(event) {
@@ -152,5 +152,5 @@
 </div>
 
 {#if isModalOpen}
-  <Modal id={currentModalId} onClose={closeModal} />
+<Modal id={currentModalId} onClose={closeModal} />
 {/if}
