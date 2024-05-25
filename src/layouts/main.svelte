@@ -127,6 +127,7 @@ for (const image of track.getElementsByClassName("image")) {
 </script>
 <div id="image-track">
   {#if showInstructions}
+
       <InstructionCard on:dismiss={dismissInstructions} />
     {/if}
   <div class="image-container" on:click={() => openModal('modal1')}>

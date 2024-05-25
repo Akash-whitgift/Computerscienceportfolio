@@ -9,7 +9,7 @@
   </script>
   
   <div class="instruction-card">
-    <h2>How to Use the Site</h2>
+    <h1>How to Use the Site</h1>
     <ul>
         <li><p>This site uses scrolling to move between cards.</p></li>
     
