@@ -113,11 +113,11 @@
 
 <div id="image-track">
   <div class="image-container" on:click={() => openModal('modal1')}>
-    <img class="image" src="src/lib/images/Ad01.jpg" draggable="false" data-active />
+    <img class="image" src="src/public/images/Ad01.jpg" draggable="false" data-active />
     <div class="text-overlay">Python</div>
   </div>
   <div class="image-container " on:click={() => openModal('modal2')}>
-    <img class="image darker" src="src/lib/images/HTML.webp" draggable="false" data-active />
+    <img class="image darker" src="src/public/images/HTML.webp" draggable="false" data-active />
     <div class="text-overlay">HTML</div>
   </div>
   <div class="image-container" on:click={() => openModal('modal3')}>
