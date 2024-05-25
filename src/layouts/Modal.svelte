@@ -569,12 +569,14 @@ function scrollToSection(id) {
   .modal-image {
     display: block;
     margin: 0 auto;
-    max-width: 100%;
+    max-width: 105%;
+    width:105%;
     height: 100%;
   object-fit: cover;
   --webkit-user-select: none;
   user-select: none;
   -webkit-user-drag: none;
+  transform: translateX(-2.5%);
   
   }
 
