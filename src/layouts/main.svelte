@@ -3,7 +3,9 @@
   import { goto } from '$app/navigation'; // Import goto from SvelteKit
   import Modal from './Modal.svelte'; // Import the Modal component
   import './styles.css';
+  import InstructionCard from './InstructionCard.svelte';
 
+  let showInstructions = true;
   let isModalOpen = false;
   let currentModalId;
   let modal = null;
@@ -16,6 +18,10 @@
 
   const isBrowser = typeof window !== 'undefined';
 
+  function dismissInstructions() {
+    localStorage.setItem('instructionsDismissed', 'true');
+    showInstructions = false;
+  }
   function openModal(modalId) {
     isModalOpen = true;
     currentModalId = modalId;
@@ -25,7 +31,7 @@
   function closeModal() {
     isModalOpen = false;
     currentModalId = null;
-
+    goto('/', { replaceState: true });
   }
 
   
@@ -70,7 +76,13 @@
       e.preventDefault();
     }
   }
+  function scrollOnLoad() {
+    track.style.transform = `translate(${-10}%, -50%)`;
 
+for (const image of track.getElementsByClassName("image")) {
+  image.style.objectPosition = `${100 + -10}% center`;
+}
+  }
   function updateTransform() {
     track.style.transform = `translate(${lastKnownPercentage}%, -50%)`;
 
@@ -85,15 +97,18 @@
       currentModalId = null;
     }
     onMount(() => {
-      track = document.getElementById("image-track");
+      const dismissed = localStorage.getItem('instructionsDismissed');
+    showInstructions = !dismissed;
 
+      track = document.getElementById("image-track");
+      scrollOnLoad();
       window.addEventListener("mousedown", handleMouseDown);
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseup", handleMouseUp);
       window.addEventListener("wheel", handleWheel, { passive: false });
       
       window.addEventListener('popstate', handlePopState);
-
+      
       const images = document.querySelectorAll(".image");
       images.forEach((image, index) => {
         image.addEventListener("click", () => openModal(`modal${index + 1}`));
@@ -110,25 +125,32 @@
   }
 
 </script>
-
 <div id="image-track">
+  {#if showInstructions}
+      <InstructionCard on:dismiss={dismissInstructions} />
+    {/if}
   <div class="image-container" on:click={() => openModal('modal1')}>
+    <img class="image" src="/about.jpg" draggable="false" data-active />
+    <div class="text-overlay">About</div>
+  </div>
+  <div class="image-container" on:click={() => openModal('modal2')}>
     <img class="image" src="/Ad01.jpg" draggable="false" data-active />
     <div class="text-overlay">Python</div>
   </div>
-  <div class="image-container " on:click={() => openModal('modal2')}>
+  <div class="image-container " on:click={() => openModal('modal3')}>
     <img class="image darker" src="/HTML.webp" draggable="false" data-active />
     <div class="text-overlay">HTML</div>
   </div>
-  <div class="image-container" on:click={() => openModal('modal3')}>
-    <img class="image" src="https://www.canada.ca/content/dam/canada/health-canada/migration/healthy-canadians/alt/images/healthy-living-vie-saine/environment-environnement/sun-soleil/radiation-rayonnement-1-590x311-eng.jpg" draggable="false" data-active />
-    <div class="text-overlay">Card 1</div>
-  </div>
   <div class="image-container" on:click={() => openModal('modal4')}>
-    <img class="image" src="https://images.pexels.com/photos/843633/pexels-photo-843633.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" draggable="false" data-active />
-    <div class="text-overlay">Card 1</div>
+    <img class="image" src="/AiEmer.jpg" draggable="false" data-active />
+    <div class="text-overlay">AI/Emerging Technologies</div>
+  </div>
+  <div class="image-container" on:click={() => openModal('modal5')}>
+    <img class="image darker" src="/amazon.jpeg" draggable="false" data-active />
+    <div class="text-overlay">Amazon Technologies Project</div>
   </div>
 </div>
+
 <style>
   .text-overlay {
     overflow: hidden;

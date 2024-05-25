@@ -10,6 +10,18 @@
   let tocHtml = '';
   const modalsData = {
     modal1: {
+      title: 'About',
+      content: `
+        <p>
+          This is my project portfolio from year 9. It took some time to make, but I'm happy with the result. It was developed using Sveltekit (Javascript Framework).
+        </p>
+        <p>
+          Click on the images to view the content for each section.
+        </p>
+      `,
+      image: "/about.jpg"
+    },
+    modal2: {
       title: 'Python',
       content: `
       <h2 id='section1'>Part 1</h2>
@@ -177,25 +189,92 @@
       `,
       image: "/Ad01.jpg"
     },
-    modal2: {
-      title: 'Uses of Infrared Light',
+    modal3: {
+      title: 'HTML',
       content: `
-        <ul>
-          <li>Remote Controls</li>
-          <li>Thermography</li>
-          <li>Heating</li>
-          <li>Communication</li>
-          <li>Security Systems</li>
-          <li>Medical Imaging</li>
-          <li>Optical Fiber Communication</li>
-          <li>Photobiomodulation</li>
-          <li>Photodynamic Therapy</li>
-          <li>Photothermal Therapy</li>
-        </ul>
+      <h2> Networking </h2>
+      <h3>Steps to Connect to a Website</h3>
+    <p class='strong'>1. Enter the Web Address</p>
+    <p>You type in a Web address (URL - Uniform resource indicator) into the address bar in the browser, such as <a href="https://arjun.bond">https://arjun.bond</a>.</p>
+    
+    <p class='strong'>2. Connect to the IP Address</p>
+    <p>Once you get the IP address you connect and then are able to request a page from the Server.</p>
+    
+    <h3>3. Server Response</h3>
+    <p>The server sends the webpage to your computer via the HTTP protocol as HTML code.</p>
+    
+    <h3>4. Browser Renders the Page</h3>
+    <p>The browser reads the HTML code and renders the page.</p>
+    
+    <h2>HTML Overview</h2>
+    <p>HTML stands for HyperText Markup Language and is used for creating webpages.</p>
+    <p>A web browser is designed to read HTML and then translate it to the things you can see on the screen.</p>
+    
+    <h3>HTML Tags</h3>
+    <p><code>&lt; Chevrons &gt;</code> - around tags</p>
+    
+    <h3>Boilerplate Code</h3>
+    <p>Essential HTML code that all web pages have:</p>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    
+    <p><code>&lt;!DOCTYPE html&gt;</code> is always the first line of an HTML page</p>
+    <p><code>&lt;html&gt;</code> - tells the browser it is HTML code for the page</p>
+    <p><code>&lt;head&gt;</code> - Things that aren't displayed in the main body of your page like the title</p>
+    <p><code>&lt;body&gt;</code> - Contains all the content you want to see displayed</p>
+    
+    <h2>Images and Links</h2>
+    
+    <h3>What is Accessibility?</h3>
+    <p>Having the ability to access something. Users of IT systems can have a wide range of needs, conditions, or disabilities.</p>
+    
+    <h3>Accessibility Tips</h3>
+    <ul>
+        <li>Use Captions in videos</li>
+        <li>Use Colours with good contrast</li>
+        <li>Voice Recognition</li>
+        <li>Better Error messages</li>
+    </ul>
+    
+    <h3>Attributes</h3>
+    <p>An attribute is an extra piece of information provided in a tag. For example, common image attributes are <code>src</code>, <code>height</code>, and <code>width</code>.</p>
+    <p>Pixelation occurs when an image is larger than it should be.</p>
+    
+    <h2>CSS - Cascading Style Sheets</h2>
+    <p>HTML + CSS</p>
+    <p>HTML describes the structure of a webpage, then CSS describes the styling (presentation of the page).</p>
+    <p>Every time we write CSS, we select the tag we want to work with, say which property we want to adjust, and give it the value we want to assign it.</p>
+    
+    <h3>Using CSS in an HTML Page</h3>
+    <p>3 options:</p>
+    <ol>
+        <li>Write the CSS inside the individual HTML tags.</li>
+        <li>Write the CSS styles inside the <code>&lt;style&gt;&lt;/style&gt;</code> tags in the <code>&lt;head&gt;</code> section of the HTML.</li>
+        <li>Create an external CSS file with the styles defined in it and link the HTML page to the CSS file.</li>
+    </ol>
+    
+    <h2>What is a DIV Tag?</h2>
+    <p>The division <code>&lt;div&gt;</code> tag helps us to split the layout of a webpage into sections.</p>
+    <p>We can create divisions in our pages by surrounding the blocks with these tags.</p>
+    <p>When you group together HTML elements using <code>&lt;div&gt;</code> tags you can ask CSS to make changes to elements within the DIV.</p>
+    <p>We can think of DIVs as a way of breaking our page into boxes or containers. You can also have divs inside of divs.</p>
+    <style>
+      .strong {
+        font-size: 1.8em;
+        font-weight: bold;
+      }
+      </style>
       `,
       image: "/HTML.webp"
     },
-    modal3: {
+    modal4: {
       title: 'Uses of Visible Light',
       content: `
         <ul>
@@ -211,10 +290,10 @@
           <li>Optical Discs</li>
         </ul>
       `,
-      image: "https://www.canada.ca/content/dam/canada/health-canada/migration/healthy-canadians/alt/images/healthy-living-vie-saine/environment-environnement/sun-soleil/radiation-rayonnement-1-590x311-eng.jpg"
+      image: "/AiEmer.jpg"
     },
-    modal4: {
-      title: 'Uses of Another Light',
+    modal5: {
+      title: 'Amazon Technologies Project',
       content: `
         <ul>
           <li>Another Use 1</li>
@@ -222,7 +301,7 @@
           <li>Another Use 3</li>
         </ul>
       `,
-      image: "https://images.pexels.com/photos/843633/pexels-photo-843633.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      image: "/amazon.jpeg"
     }
   };
 
@@ -289,7 +368,7 @@ function scrollToSection(id) {
     <div class="toc">
         
         
-      <Toc />
+      <Toc class='toc'> </Toc>
       </div>
     <div class="content-container">
 <hr>
