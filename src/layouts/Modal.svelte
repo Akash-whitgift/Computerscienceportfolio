@@ -175,7 +175,7 @@
         }
         </style>
       `,
-      image: "src/lib/images/Ad01.jpg"
+      image: "/Ad01.jpg"
     },
     modal2: {
       title: 'Uses of Infrared Light',
@@ -193,7 +193,7 @@
           <li>Photothermal Therapy</li>
         </ul>
       `,
-      image: "src/lib/images/HTML.webp"
+      image: "/HTML.webp"
     },
     modal3: {
       title: 'Uses of Visible Light',
