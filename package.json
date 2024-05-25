@@ -18,6 +18,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"all": "^0.0.0"
+		"all": "^0.0.0",
+		"svelte-icons": "^2.1.0"
 	}
 }

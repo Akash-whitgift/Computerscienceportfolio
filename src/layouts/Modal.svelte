@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
-  import  Toc from 'svelte-toc'
+  import  Toc from './Toc.svelte'
   export let id;
   export let onClose;
 
@@ -269,14 +269,15 @@ function scrollToSection(id) {
 <div class="modal {isClosing ? 'fade-out' : 'fade-in'}" id={id} transition:fade={{ duration: 300 }}>
   <span class="close" on:click={handleClose}>&times;</span>
   <img class="modal-image" src={modalsData[id].image} />
+  
   <div class="modal-text">
     <h1>{modalsData[id].title}</h1>
-    <div class="content-container">
-      <div class="toc">
+    <div class="toc">
         
         
       <Toc />
       </div>
+    <div class="content-container">
 <hr>
       <div class="content">
         {@html content}
