@@ -28,28 +28,7 @@
 
   }
 
-  function allowModalScroll(event) {
-    const modalContent = modal.querySelector('.text-overlay');
-    const contentHeight = modalContent.scrollHeight;
-    const clientHeight = modalContent.clientHeight;
-    const currentTop = parseInt(window.getComputedStyle(modalContent).top, 10) || 0;
-
-    if (contentHeight > clientHeight) {
-      let newTop = currentTop - event.deltaY;
-
-      // Prevent scrolling beyond the content limits
-      if (newTop > 0) {
-        newTop = 0;
-      } else if (newTop < clientHeight - contentHeight) {
-        newTop = clientHeight - contentHeight;
-      }
-
-      modalContent.style.top = `${newTop}px`;
-      event.preventDefault();
-    } else {
-      event.preventDefault();
-    }
-  }
+  
 
   function handleMouseDown(e) {
     if (!isModalOpen) {
@@ -112,7 +91,7 @@
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseup", handleMouseUp);
       window.addEventListener("wheel", handleWheel, { passive: false });
-
+      
       window.addEventListener('popstate', handlePopState);
 
       const images = document.querySelectorAll(".image");
@@ -134,12 +113,12 @@
 
 <div id="image-track">
   <div class="image-container" on:click={() => openModal('modal1')}>
-    <img class="image" src="https://images.pexels.com/photos/3912479/pexels-photo-3912479.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" draggable="false" data-active />
-    <div class="text-overlay">Card 1</div>
+    <img class="image" src="src/lib/images/Ad01.jpg" draggable="false" data-active />
+    <div class="text-overlay">Python</div>
   </div>
-  <div class="image-container" on:click={() => openModal('modal2')}>
-    <img class="image" src="https://images.pexels.com/photos/3269269/pexels-photo-3269269.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" draggable="false" data-active />
-    <div class="text-overlay">Card 1</div>
+  <div class="image-container " on:click={() => openModal('modal2')}>
+    <img class="image darker" src="src/lib/images/HTML.webp" draggable="false" data-active />
+    <div class="text-overlay">HTML</div>
   </div>
   <div class="image-container" on:click={() => openModal('modal3')}>
     <img class="image" src="https://www.canada.ca/content/dam/canada/health-canada/migration/healthy-canadians/alt/images/healthy-living-vie-saine/environment-environnement/sun-soleil/radiation-rayonnement-1-590x311-eng.jpg" draggable="false" data-active />
@@ -150,7 +129,14 @@
     <div class="text-overlay">Card 1</div>
   </div>
 </div>
-
+<style>
+  .text-overlay {
+    overflow: hidden;
+  }
+  .darker {
+    
+  }
+  </style>
 {#if isModalOpen}
 <Modal id={currentModalId} onClose={closeModal} />
 {/if}

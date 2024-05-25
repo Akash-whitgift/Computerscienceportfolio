@@ -10,7 +10,7 @@
   let tocHtml = '';
   const modalsData = {
     modal1: {
-      title: 'Uses of Ultraviolet Light',
+      title: 'Python',
       content: `
       <h2 id='section1'>Part 1</h2>
       <h3>Subsection 1</h3>
@@ -147,6 +147,8 @@
           <li>Plant Grow lights</li>
           <li>Fluorescence</li>
         </ul>
+        <code>
+        <textarea readonly>
         <ul>
           <li>Curing Resins</li>
           <li>Curing Inks</li>
@@ -159,9 +161,21 @@
           <li>Plant Grow lights</li>
           <li>Fluorescence</li>
         </ul>
+        </textarea>
+        </code>
         <h4>Subsection 2</h4>
+        <style>
+        textarea {
+            background: transparent;
+            border: 0px;
+            width: 100%;
+            height: 20vh;
+            color: white;
+            resize:none;
+        }
+        </style>
       `,
-      image: "https://images.pexels.com/photos/3912479/pexels-photo-3912479.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      image: "src/lib/images/Ad01.jpg"
     },
     modal2: {
       title: 'Uses of Infrared Light',
@@ -179,7 +193,7 @@
           <li>Photothermal Therapy</li>
         </ul>
       `,
-      image: "https://images.pexels.com/photos/3269269/pexels-photo-3269269.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      image: "src/lib/images/HTML.webp"
     },
     modal3: {
       title: 'Uses of Visible Light',
@@ -377,4 +391,6 @@ function scrollToSection(id) {
 aside {
     display: none !important;
   }
+
+
 </style>

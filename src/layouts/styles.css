@@ -122,6 +122,9 @@ body {
       transition: filter 0.3s ease;
       filter: brightness(80%);
     }
+    .darker {
+      filter: brightness(70%);
+    }
     .image-container:hover > .image {
       filter: brightness(60%);
       transition: filter 0.3s ease;
