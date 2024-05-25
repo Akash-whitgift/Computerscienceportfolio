@@ -16,6 +16,8 @@
     <li><p>To move the cards left or right, use the scroll wheel on your mouse.</p></li>
     <li><p>To see information about the topic on a card, click on it.</p></li>
     <li><p>At the top of each card, there is a table of contents, click on a section to scroll there.</p></li>
+    <li><p>To close the card press the 'x' in the top right corner</p></li>
+    <li><p>If you cannot scroll please make sure Javascript is enabled in your browser</p></li>
     </ul>
     <p>Click the button below to dismiss this message, it will not be shown again.</p>
     <button on:click={dismiss}>Got it!</button>
