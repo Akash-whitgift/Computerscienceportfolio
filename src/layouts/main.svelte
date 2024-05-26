@@ -15,7 +15,7 @@
   let lastKnownPercentage = -10;
   let dragSensitivity = 0.01;
   let scrollSensitivity = 0.2;
-
+let isMobile = false;
   const isBrowser = typeof window !== 'undefined';
 
   function dismissInstructions() {
@@ -44,7 +44,7 @@
   }
 
   function handleMouseMove(e) {
-    if (isMouseDown && !isModalOpen) {
+    if (isMouseDown && !isModalOpen && !isMobile) {
       const mouseDelta = initialMouseX - e.clientX;
       const maxDelta = window.innerWidth / 2;
 
@@ -56,13 +56,29 @@
       updateTransform();
     }
   }
+  function handleResize() {
+    isMobile = window.innerWidth <= 600;
+    if (isMobile) {
+        scrollOnLoad(-50);
+        window.removeEventListener("mousedown", handleMouseDown);
+        window.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("mouseup", handleMouseUp);
+        window.removeEventListener("wheel", handleWheel);
+    } else {
+      scrollOnLoad(-10);
+        window.addEventListener("mousedown", handleMouseDown);
+        window.addEventListener("mousemove", handleMouseMove);
+        window.addEventListener("mouseup", handleMouseUp);
+        window.addEventListener("wheel", handleWheel, { passive: false });
+    }
+}
 
   function handleMouseUp() {
     isMouseDown = false;
   }
 
   function handleWheel(e) {
-    if (!isModalOpen) {
+    if (!isModalOpen && !isMobile) {
       const delta = e.deltaY || e.detail || e.wheelDelta;
       const scrollAmount = delta * scrollSensitivity;
       const maxDelta = window.innerHeight / 2;
@@ -76,8 +92,9 @@
       e.preventDefault();
     }
   }
-  function scrollOnLoad() {
-    track.style.transform = `translate(${-10}%, -50%)`;
+  function scrollOnLoad(x) {
+    console.log(x);
+    track.style.transform = `translate(${x}%, -50%)`;
 
 for (const image of track.getElementsByClassName("image")) {
   image.style.objectPosition = `${100 + -10}% center`;
@@ -98,29 +115,34 @@ for (const image of track.getElementsByClassName("image")) {
     }
     onMount(() => {
       const dismissed = localStorage.getItem('instructionsDismissed');
-    showInstructions = !dismissed;
+        showInstructions = !dismissed;
 
-      track = document.getElementById("image-track");
-      scrollOnLoad();
-      window.addEventListener("mousedown", handleMouseDown);
-      window.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener("mouseup", handleMouseUp);
-      window.addEventListener("wheel", handleWheel, { passive: false });
-      
-      window.addEventListener('popstate', handlePopState);
-      
-      const images = document.querySelectorAll(".image");
-      images.forEach((image, index) => {
-        image.addEventListener("click", () => openModal(`modal${index + 1}`));
-      });
+        track = document.getElementById("image-track");
+        handleResize();
+
+        if (isMobile) {
+            window.removeEventListener("mousedown", handleMouseDown);
+            window.removeEventListener("mousemove", handleMouseMove);
+            window.removeEventListener("mouseup", handleMouseUp);
+            window.removeEventListener("wheel", handleWheel);
+        } else {
+            window.addEventListener("mousedown", handleMouseDown);
+            window.addEventListener("mousemove", handleMouseMove);
+            window.addEventListener("mouseup", handleMouseUp);
+            window.addEventListener("wheel", handleWheel, { passive: false });
+        }
+
+        window.addEventListener('popstate', handlePopState);
+        window.addEventListener('resize', handleResize);
     });
 
     onDestroy(() => {
       window.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener('popstate', handlePopState);
+        window.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("mouseup", handleMouseUp);
+        window.removeEventListener("wheel", handleWheel);
+        window.removeEventListener('popstate', handlePopState);
+        window.removeEventListener('resize', handleResize);
     });
   }
 
@@ -157,7 +179,7 @@ for (const image of track.getElementsByClassName("image")) {
     overflow: hidden;
   }
   .darker {
-    
+    filter: brightness(0.7);
   }
   </style>
 {#if isModalOpen}

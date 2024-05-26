@@ -464,6 +464,12 @@ for counter in range(0,30,n):
     color:white;
     text-decoration: underline;
   }
+  @media (max-width: 600px) {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
   </style>
       `,
       image: "/amazon.jpeg"
@@ -555,7 +561,7 @@ function scrollToSection(id) {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.4);
     opacity: 1;
     transition: opacity 0.3s ease;
@@ -571,12 +577,13 @@ function scrollToSection(id) {
     margin: 0 auto;
     max-width: 105%;
     width:105%;
-    height: 100%;
+    height: 110%;
   object-fit: cover;
   --webkit-user-select: none;
   user-select: none;
   -webkit-user-drag: none;
   transform: translateX(-2.5%);
+  transform: translateY(-10%);
   
   }
 
@@ -609,6 +616,17 @@ function scrollToSection(id) {
     font-size: 3.5em;
     margin: 5px;
   }
+  @media (max-width: 600px) {
+  h1 {
+    font-size:2.5em;
+
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
   .content-container {
     flex: 1;
     padding-right: 20px; /* Adjust spacing between TOC and content */
