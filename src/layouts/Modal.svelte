@@ -296,6 +296,13 @@ for counter in range(0,30,n):
     <p>We can create divisions in our pages by surrounding the blocks with these tags.</p>
     <p>When you group together HTML elements using <code>&lt;div&gt;</code> tags, you can ask CSS to make changes to elements within the DIV.</p>
     <p>We can think of DIVs as a way of breaking our page into boxes or containers. You can also have DIVs inside of DIVs.</p>
+    <style>
+  a {
+    color:white;
+    text-decoration: underline;
+  }
+  </style>
+  
       `,
       image: "/HTML.webp"
     },
