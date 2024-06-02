@@ -215,6 +215,12 @@ for counter in range(0,30,n):
 # It also uses the range, with the first number being the starting value, the second number being the max value,
 # and the final number (3rd) being the increments that counter is increased by (n) in this case that is 2.
     </code></pre>
+    <style>
+  a {
+    color:white;
+    text-decoration: underline;
+  }
+  </style>
       `,
       image: "/Ad01.jpg"
     },
@@ -289,12 +295,6 @@ for counter in range(0,30,n):
     <p>We can create divisions in our pages by surrounding the blocks with these tags.</p>
     <p>When you group together HTML elements using <code>&lt;div&gt;</code> tags, you can ask CSS to make changes to elements within the DIV.</p>
     <p>We can think of DIVs as a way of breaking our page into boxes or containers. You can also have DIVs inside of DIVs.</p>
-    <style>
-  a {
-    color:white;
-    text-decoration: underline;
-  }
-  </style>
       `,
       image: "/HTML.webp"
     },
