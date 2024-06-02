@@ -1,6 +1,16 @@
 <script>
+   import { onMount} from 'svelte';
     import { createEventDispatcher } from 'svelte';
-  
+    const isBrowser = typeof window !== 'undefined';
+    let isFirefox = false;
+
+    onMount(() => {
+    isFirefox = (navigator.userAgent.indexOf('Firefox') !== -1);
+
+    if (isFirefox) {
+        console.log('firefox detected');
+    }
+    });
     const dispatch = createEventDispatcher();
   
     function dismiss() {
@@ -11,8 +21,10 @@
   <div class="instruction-card">
     <h1>How to Use the Site</h1>
     <ul>
-        <li><p>This site uses scrolling to move between cards.</p></li>
-    
+      {#if isFirefox}
+      <li><p style='font-size: 1.8em;'><b><u>Firefox is known to have issues with the table of contents, for the best experience use chrome</u></b></p></li>
+      {/if}
+    <li><p>This site uses scrolling to move between cards.</p></li>
     <li><p>To move the cards left or right, use the scroll wheel on your mouse.</p></li>
     <li><p>To see information about the topic on a card, click on it.</p></li>
     <li><p>At the top of each card, there is a table of contents, click on a section to scroll there.</p></li>

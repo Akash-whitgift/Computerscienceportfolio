@@ -565,7 +565,7 @@ function scrollToSection(id) {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
     background-color: rgba(0, 0, 0, 0.4);
     opacity: 1;
     transition: opacity 0.3s ease;
