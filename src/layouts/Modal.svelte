@@ -295,13 +295,7 @@ for counter in range(0,30,n):
     <p>We can create divisions in our pages by surrounding the blocks with these tags.</p>
     <p>When you group together HTML elements using <code>&lt;div&gt;</code> tags, you can ask CSS to make changes to elements within the DIV.</p>
     <p>We can think of DIVs as a way of breaking our page into boxes or containers. You can also have DIVs inside of DIVs.</p>
-    <style>
-  a {
-    color:white;
-    text-decoration: underline;
-  }
-  </style>  
-    `,
+      `,
       image: "/HTML.webp"
     },
     modal4: {
@@ -502,9 +496,6 @@ for counter in range(0,30,n):
       isClosing = false;
     }, 1); // Matches the duration of the fade-out transition
   }
- function handleTOCClick(event) {
-    scrollToSection(event); // Pass the target element directly
-  }
 
 
 
@@ -543,14 +534,13 @@ function scrollToSection(id) {
 </script>
 
 <div class="modal {isClosing ? 'fade-out' : 'fade-in'}" id={id} transition:fade={{ duration: 300 }}>
-  <span class="close" on:click={handleClose}>&times;</span>
+  <div class='container'>
+  <span class="close" id='closecross' on:click={handleClose}>&times;</span>
   <img class="modal-image" src={modalsData[id].image} />
   
   <div class="modal-text">
     <h1>{modalsData[id].title}</h1>
     <div class="toc">
-        
-        
       <Toc class='toc'> </Toc>
       </div>
     <div class="content-container">
@@ -559,6 +549,7 @@ function scrollToSection(id) {
         {@html content}
       </div>
     </div>
+  </div>
   </div>
 </div>
 
@@ -574,9 +565,17 @@ function scrollToSection(id) {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    overflow-y: scroll;
     background-color: rgba(0, 0, 0, 0.4);
     opacity: 1;
     transition: opacity 0.3s ease;
+  }
+  .container {
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
   }
   .fade-in {
     opacity: 1;
@@ -587,16 +586,15 @@ function scrollToSection(id) {
   .modal-image {
     display: block;
     margin: 0 auto;
-    max-width: 105%;
-    width:105%;
-    height: 110%;
+    width: 110%;
+    height: 110vh;
   object-fit: cover;
   --webkit-user-select: none;
   user-select: none;
   -webkit-user-drag: none;
   transform: translateX(-2.5%);
   transform: translateY(-10%);
-  
+  overflow: hidden;
   }
 
   .close {
@@ -638,11 +636,24 @@ function scrollToSection(id) {
     height: auto;
   }
 }
+.modal-text::-webkit-scrollbar {
+width: 2px;
+  border-radius: 80%;
+}
+.modal-text::-webkit-scrollbar-track{
+background: #000000;
+  width:0;
+  visibility: hidden;
+}
+.modal-text::-webkit-scrollbar-thumb {
+background: #ffffff;
+border-radius: 2px;
+}
 
   .content-container {
     flex: 1;
     padding-right: 20px; /* Adjust spacing between TOC and content */
-    overflow-y: auto; /* Allow scrolling if content is too long */
+    overflow-y: hidden; /* Allow scrolling if content is too long */
   }
 
 

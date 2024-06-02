@@ -1,4 +1,7 @@
-<script>import { createEventDispatcher, onMount } from 'svelte';
+
+<script>
+// prebuilt TOC component from Sveltekit
+import { createEventDispatcher, onMount } from 'svelte';
     import { blur } from 'svelte/transition';
     import { MenuIcon } from '.';
     export let activeHeading = null;
